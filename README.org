@@ -1,7 +1,7 @@
 #+TITLE: el-autoyas.el
 #+AUTHOR: Matthew L. Fidler
 * About
-r-autoyas is a small complement to yasnippet for emacs-lisp-mode.  It
+el-autoyas is a small complement to yasnippet for emacs-lisp-mode.  It
 provides automatically created yasnippets from eldoc argument lists.
 * Requirements
  - [[https://github.com/capitaomorte/yasnippet][yasnippet]]
