@@ -6,16 +6,17 @@
 ;; Maintainer: Matthew L. Fidler
 ;; Created: Mon Nov 21 10:55:55 2011 (-0600)
 ;; Version: 0.1
-;; Last-Updated: Mon Nov 21 16:15:30 2011 (-0600)
+;; Last-Updated: Mon Nov 28 08:46:55 2011 (-0600)
 ;;           By: Matthew L. Fidler
-;;     Update #: 191
+;;     Update #: 194
 ;; URL: https://github.com/mlf176f2/el-autoyas.el
 ;; Keywords: Emacs Lisp Mode Yasnippet
 ;; Compatibility: 
 ;; 
 ;; Features that might be required by this library:
 ;;
-;;   None
+;;   `assoc', `button', `cl', `easymenu', `eldoc', `help-fns',
+;;   `help-mode', `view', `yasnippet', `yasnippet-bundle'.
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 
@@ -175,66 +176,68 @@
         (found-body nil)
         (moving-away-text "nil")
         (snippet nil))
-    ;; Remove initial (
-    (when (and symbol (string= (substring symbol 0 1) "("))
-      (setq symbol (substring symbol 1)))
-    (when (assoc symbol el-autoyas-abbrevs)
-      (setq symbol (nth 1 (assoc symbol el-autoyas-abbrevs))))
-    (setq function-name symbol)
-    (setq symbol (intern-soft symbol))
-    (if (not (and symbol (fboundp symbol)))
+    (if (string= "" symbol-name)
         (indent-for-tab-command arg)
-      (setq snippet (eldoc-get-fnsym-args-string symbol))
-      (if (not (string-match ":[ \t]*[(]\\(.*?\\)[)]" snippet))
+      ;; Remove initial (
+      (when (and symbol (string= (substring symbol 0 1) "("))
+        (setq symbol (substring symbol 1)))
+      (when (assoc symbol el-autoyas-abbrevs)
+        (setq symbol (nth 1 (assoc symbol el-autoyas-abbrevs))))
+      (setq function-name symbol)
+      (setq symbol (intern-soft symbol))
+      (if (not (and symbol (fboundp symbol)))
           (indent-for-tab-command arg)
-        (setq snippet (match-string 1 snippet))
-        (with-temp-buffer
-          (insert snippet)
-          (goto-char (point-min))
-          (while (re-search-forward "\\([^ \t}]+\\)" nil t)
-            (when found-body
-              (goto-char (match-beginning 0))
-              (setq found-body nil)
-              (insert "\n")
-              (re-search-forward "\\([^ \t}]+\\)" nil t))
-            (cond
-             ((string= "&rest" (match-string 1))
-              (replace-match "")
-              (setq opt t)
-              (setq moving-away-text "")
-              (delete-char 1))
-             ((save-match-data (string-match "^BODY" (match-string 1)))
-              (setq found-body t)
-              (replace-match "\n$0"))
-             ((string= "&optional" (match-string 1))
-              (replace-match (concat "${" (number-to-string i) ":"))
-              (save-excursion
+        (setq snippet (eldoc-get-fnsym-args-string symbol))
+        (if (not (string-match ":[ \t]*[(]\\(.*?\\)[)]" snippet))
+            (indent-for-tab-command arg)
+          (setq snippet (match-string 1 snippet))
+          (with-temp-buffer
+            (insert snippet)
+            (goto-char (point-min))
+            (while (re-search-forward "\\([^ \t}]+\\)" nil t)
+              (when found-body
                 (goto-char (match-beginning 0))
-                (backward-char 1)
+                (setq found-body nil)
+                (insert "\n")
+                (re-search-forward "\\([^ \t}]+\\)" nil t))
+              (cond
+               ((string= "&rest" (match-string 1))
+                (replace-match "")
+                (setq opt t)
+                (setq moving-away-text "")
                 (delete-char 1))
-              (setq opt t)
-              (save-excursion
-                (goto-char (point-max))
-                (insert "}"))
-              (setq i (+ 1 i)))
-             (opt
-              (replace-match (concat "${" (number-to-string i) ":\\1$(el-autoyas-text-on-moving-away \"" moving-away-text "\" \"\\1\")}") t)
-              (setq i (+ 1 i)))
-             (t
-              (replace-match (concat "${" (number-to-string i) ":\\1}"))
-              (setq i (+ 1 i)))))
-          (goto-char (point-min))
-          (insert "(" function-name " ")
-          (goto-char (point-max))
-          (when (looking-back "[$]{[^{]*[.][.][.][}]\\([}]*\\)")
-            (replace-match "\\1")
-            (insert "$0"))
-          (insert ")")
-          (setq snippet (buffer-substring-no-properties (point-min) (point-max))))
-        (when (and del (looking-at ")"))
-          (replace-match ""))
-        (delete-region (- (point) (length symbol-name)) (point))
-        (yas/expand-snippet snippet)))))
+               ((save-match-data (string-match "^BODY" (match-string 1)))
+                (setq found-body t)
+                (replace-match "\n$0"))
+               ((string= "&optional" (match-string 1))
+                (replace-match (concat "${" (number-to-string i) ":"))
+                (save-excursion
+                  (goto-char (match-beginning 0))
+                  (backward-char 1)
+                  (delete-char 1))
+                (setq opt t)
+                (save-excursion
+                  (goto-char (point-max))
+                  (insert "}"))
+                (setq i (+ 1 i)))
+               (opt
+                (replace-match (concat "${" (number-to-string i) ":\\1$(el-autoyas-text-on-moving-away \"" moving-away-text "\" \"\\1\")}") t)
+                (setq i (+ 1 i)))
+               (t
+                (replace-match (concat "${" (number-to-string i) ":\\1}"))
+                (setq i (+ 1 i)))))
+            (goto-char (point-min))
+            (insert "(" function-name " ")
+            (goto-char (point-max))
+            (when (looking-back "[$]{[^{]*[.][.][.][}]\\([}]*\\)")
+              (replace-match "\\1")
+              (insert "$0"))
+            (insert ")")
+            (setq snippet (buffer-substring-no-properties (point-min) (point-max))))
+          (when (and del-char (looking-at ")"))
+            (replace-match ""))
+          (delete-region (- (point) (length symbol-name)) (point))
+          (yas/expand-snippet snippet))))))
 
 (defun el-autoyas-text-on-moving-away (default-text &optional orig-text)
   "* Changes text when moving away AND original text has not changed"
