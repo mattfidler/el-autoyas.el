@@ -1,4 +1,4 @@
-;;; el-autoyas.el --- Automatically create Emacs-Lisp Yasnippets
+-;;; el-autoyas.el --- Automatically create Emacs-Lisp Yasnippets
 ;; 
 ;; Filename: el-autoyas.el
 ;; Description: Automatically create Emacs-Lisp Yasnippets
@@ -20,6 +20,11 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 
+;;; Install:
+;;
+;;    (autoload 'el-autoyas-enable "el-autoyas")
+;;    (add-hook 'emacs-lisp-mode-hook 'el-autoyas-enable)
+;;
 ;;; Commentary: 
 ;; 
 ;;   
@@ -147,6 +152,10 @@
            (string :tag "Emacs Function")))
   :group 'el-autoyas)
 
+(defvar el-autoyas-load-hook ni
+  "*Hook run on package load.
+Suggestion: Add `el-autoyas-install'.")
+
 (defun el-autoyas-expand-maybe (&optional arg)
   "Expands autoyas snippets.  Falls back to
 `indent-for-tab-command' if it does not expand."
@@ -257,14 +266,13 @@
       (yas/update-mirrors snippet))))
 
 ;;;###autoload
-(add-hook 'emacs-lisp-mode-hook
-          '(lambda ()
-             (require 'el-autoyas nil t)
-             (when (featurep 'el-autoyas)
-               (set (make-local-variable 'yas/fallback-behavior)
-                    '(apply el-autoyas-expand-maybe))
-               (yas/minor-mode 1))))
-
+(defun el-autoyas-enable ()
+  "Load and activate package."
+  (require 'el-autoyas nil t)
+  (when (featurep 'el-autoyas)
+    (set (make-local-variable 'yas/fallback-behavior)
+	 '(apply el-autoyas-expand-maybe))
+    (yas/minor-mode 1)))
 
 (provide 'el-autoyas)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
