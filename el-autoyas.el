@@ -1,4 +1,4 @@
--;;; el-autoyas.el --- Automatically create Emacs-Lisp Yasnippets
+;;; el-autoyas.el --- Automatically create Emacs-Lisp Yasnippets
 ;; 
 ;; Filename: el-autoyas.el
 ;; Description: Automatically create Emacs-Lisp Yasnippets
