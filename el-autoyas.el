@@ -152,7 +152,7 @@
            (string :tag "Emacs Function")))
   :group 'el-autoyas)
 
-(defvar el-autoyas-load-hook ni
+(defvar el-autoyas-load-hook nil
   "*Hook run on package load.
 Suggestion: Add `el-autoyas-install'.")
 
