@@ -1,7 +1,7 @@
 #+TITLE: el-autoyas.el
 #+AUTHOR: Matthew L. Fidler
 * Library Information
- *el-autoyas.el* --- Automatically create Emacs-Lisp Yasnippets
+ /el-autoyas.el/ --- Automatically create Emacs-Lisp Yasnippets
 
  - Filename :: [[file:el-autoyas.el][el-autoyas.el]]
  - Description :: Automatically create Emacs-Lisp Yasnippets
@@ -142,6 +142,23 @@ Suggestion: Add =el-autoyas-install=.
 Yasnippet backward compatability functions used in el-autoyas.el
 
 Value: ((yas/expand-snippet yas-expand-snippet)
+ (yas/modified-p yas-modified-p)
+ (yas/moving-away-p yas-moving-away-p)
+ (yas/text yas-text)
+ (yas/skip-and-clear-or-delete-char yas-skip-and-clear-or-delete-char)
+ (yas/snippets-at-point yas--snippets-at-point)
+ (yas/update-mirrors yas--update-mirrors)
+ (yas/fallback-behavior yas-fallback-behavior)
+ (yas/minor-mode yas-minor-mode))
+
+
+*Hook run on package load.
+Suggestion: Add =el-autoyas-install=.
+
+*** yas-backward-compatability
+Yasnippet backward compatability functions used in el-autoyas.el
+
+Value: ((yas/expand-snippet yas-expand-snippet)
 (yas/modified-p yas-modified-p)
 (yas/moving-away-p yas-moving-away-p)
 (yas/text yas-text)
@@ -171,6 +188,7 @@ Value: ((yas/expand-snippet yas-expand-snippet)
 
 * History
 
+ - 12-Sep-2012 ::  Another attempt to fix emacswiki documentation ()
  - 12-Sep-2012 ::  Org-readme sync attempt -- trying to fix bug in org-readme. ()
  - 12-Sep-2012 ::  Another attempt to upload el-autoyas without the documentation issues previously observed. ()
  - 12-Sep-2012 ::  Another attempt to sync. ()

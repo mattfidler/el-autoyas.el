@@ -13,7 +13,7 @@
 
 @node el-autoyasel
 @chapter el-autoyas.el
-Matthew L. Fidler ## Library Information @strong{el-autoyas.el} --- Automatically create Emacs-Lisp Yasnippets
+Matthew L. Fidler ## Library Information @emph{el-autoyas.el} --- Automatically create Emacs-Lisp Yasnippets
 
 @itemize
 @item
@@ -43,6 +43,7 @@ Matthew L. Fidler ## Library Information @strong{el-autoyas.el} --- Automaticall
 @menu
 * Possible Dependencies::
 * About::
+* Hook run on package load::
 * Hook run on package load::
 * Hook run on package load::
 * Hook run on package load::
@@ -112,9 +113,21 @@ Yasnippet backward compatability functions used in el-autoyas.el
 
 Value: ((yas/expand-snippet yas-expand-snippet) (yas/modified-p yas-modified-p) (yas/moving-away-p yas-moving-away-p) (yas/text yas-text) (yas/skip-and-clear-or-delete-char yas-skip-and-clear-or-delete-char) (yas/snippets-at-point yas--snippets-at-point) (yas/update-mirrors yas--update-mirrors) (yas/fallback-behavior yas-fallback-behavior) (yas/minor-mode yas-minor-mode))
 
+@node Hook run on package load
+@section Hook run on package load.
+Suggestion: Add @code{el-autoyas-install}.
+
+@node yas-backward-compatability
+@subsubsection yas-backward-compatability
+Yasnippet backward compatability functions used in el-autoyas.el
+
+Value: ((yas/expand-snippet yas-expand-snippet) (yas/modified-p yas-modified-p) (yas/moving-away-p yas-moving-away-p) (yas/text yas-text) (yas/skip-and-clear-or-delete-char yas-skip-and-clear-or-delete-char) (yas/snippets-at-point yas--snippets-at-point) (yas/update-mirrors yas--update-mirrors) (yas/fallback-behavior yas-fallback-behavior) (yas/minor-mode yas-minor-mode))
+
 @node History
 @section History
 @itemize
+@item
+@strong{12-Sep-2012} -- Another attempt to fix emacswiki documentation ()
 @item
 @strong{12-Sep-2012} -- Org-readme sync attempt -- trying to fix bug in org-readme. ()
 @item
