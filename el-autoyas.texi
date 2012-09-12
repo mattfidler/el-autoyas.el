@@ -42,8 +42,8 @@ Matthew L. Fidler ## Library Information @strong{el-autoyas.el} --- Automaticall
 
 @menu
 * Possible Dependencies::
-* el-autoyasel* --- Automatically create Emacs-Lisp Yasnippets::
 * About::
+* Hook run on package load::
 * Hook run on package load::
 * Hook run on package load::
 * Hook run on package load::
@@ -54,33 +54,6 @@ Matthew L. Fidler ## Library Information @strong{el-autoyas.el} --- Automaticall
 @node Possible Dependencies
 @section Possible Dependencies
 @code{assoc'@comma{}}button'@comma{} @code{cl'@comma{}}easymenu'@comma{} @code{eldoc'@comma{}}help-fns'@comma{} @code{help-mode'@comma{}}view'@comma{} @code{yasnippet'@comma{}}yasnippet-bundle'.
-
-@node el-autoyasel* --- Automatically create Emacs-Lisp Yasnippets
-@section el-autoyas.el* --- Automatically create Emacs-Lisp Yasnippets
-@itemize
-@item
-@strong{Filename} -- el-autoyas.el
-@item
-@strong{Description} -- Automatically create Emacs-Lisp Yasnippets
-@item
-@strong{Author} -- Matthew L. Fidler
-@item
-@strong{Maintainer} -- Matthew L. Fidler
-@item
-@strong{Created} -- Mon Nov 21 10:55:55 2011 (-0600)
-@item
-@strong{Version} -- 0.2
-@item
-@strong{Last-Updated} -- Mon Nov 28 08:46:55 2011 (-0600)
-@item
-@strong{By} -- Matthew L. Fidler
-@item
-@strong{Update #} -- 194
-@item
-@strong{URL} -- https:__github.com_mlf176f2_el-autoyas.el
-@item
-@strong{Keywords} -- Emacs Lisp Mode Yasnippet Compatibility:
-@end itemize
 
 @node About
 @section About
@@ -129,9 +102,21 @@ Yasnippet backward compatability functions used in el-autoyas.el
 
 Value: ((yas/expand-snippet yas-expand-snippet) (yas/modified-p yas-modified-p) (yas/moving-away-p yas-moving-away-p) (yas/text yas-text) (yas/skip-and-clear-or-delete-char yas-skip-and-clear-or-delete-char) (yas/snippets-at-point yas--snippets-at-point) (yas/update-mirrors yas--update-mirrors) (yas/fallback-behavior yas-fallback-behavior) (yas/minor-mode yas-minor-mode))
 
+@node Hook run on package load
+@section Hook run on package load.
+Suggestion: Add @code{el-autoyas-install}.
+
+@node yas-backward-compatability
+@subsubsection yas-backward-compatability
+Yasnippet backward compatability functions used in el-autoyas.el
+
+Value: ((yas/expand-snippet yas-expand-snippet) (yas/modified-p yas-modified-p) (yas/moving-away-p yas-moving-away-p) (yas/text yas-text) (yas/skip-and-clear-or-delete-char yas-skip-and-clear-or-delete-char) (yas/snippets-at-point yas--snippets-at-point) (yas/update-mirrors yas--update-mirrors) (yas/fallback-behavior yas-fallback-behavior) (yas/minor-mode yas-minor-mode))
+
 @node History
 @section History
 @itemize
+@item
+@strong{12-Sep-2012} -- Org-readme sync attempt -- trying to fix bug in org-readme. ()
 @item
 @strong{12-Sep-2012} -- Another attempt to upload el-autoyas without the documentation issues previously observed. ()
 @item
