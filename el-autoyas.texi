@@ -42,7 +42,10 @@ Matthew L. Fidler ## Library Information @strong{el-autoyas.el} --- Automaticall
 
 @menu
 * Possible Dependencies::
+* el-autoyasel* --- Automatically create Emacs-Lisp Yasnippets::
 * About::
+* Hook run on package load::
+* Hook run on package load::
 * History::
 @end menu
 
@@ -50,15 +53,65 @@ Matthew L. Fidler ## Library Information @strong{el-autoyas.el} --- Automaticall
 @section Possible Dependencies
 @code{assoc'@comma{}}button'@comma{} @code{cl'@comma{}}easymenu'@comma{} @code{eldoc'@comma{}}help-fns'@comma{} @code{help-mode'@comma{}}view'@comma{} @code{yasnippet'@comma{}}yasnippet-bundle'.
 
+@node el-autoyasel* --- Automatically create Emacs-Lisp Yasnippets
+@section el-autoyas.el* --- Automatically create Emacs-Lisp Yasnippets
+@itemize
+@item
+@strong{Filename} -- el-autoyas.el
+@item
+@strong{Description} -- Automatically create Emacs-Lisp Yasnippets
+@item
+@strong{Author} -- Matthew L. Fidler
+@item
+@strong{Maintainer} -- Matthew L. Fidler
+@item
+@strong{Created} -- Mon Nov 21 10:55:55 2011 (-0600)
+@item
+@strong{Version} -- 0.2
+@item
+@strong{Last-Updated} -- Mon Nov 28 08:46:55 2011 (-0600)
+@item
+@strong{By} -- Matthew L. Fidler
+@item
+@strong{Update #} -- 194
+@item
+@strong{URL} -- https:__github.com_mlf176f2_el-autoyas.el
+@item
+@strong{Keywords} -- Emacs Lisp Mode Yasnippet Compatibility:
+@end itemize
+
 @node About
 @section About
-el-autoyas is a small complement to yasnippet for emacs-lisp-mode. It provides automatically created yasnippets from eldoc argument lists. ## Requirements - @uref{https:__github.com_capitaomorte_yasnippet,yasnippet} - eldoc ## Usage - To expand the snippet@comma{} type the function name or abbrevation and then press @code{TAB} - To jump to the next field press @code{TAB}. If you did not change the field@comma{} either the parameter is kept@comma{} or replaced with @code{nil} or nothing depending on the argument list. ## Limitations - Currently does not support common lisp key functions - Unclear if nested snippet expansion is supported. ## Loading el-autoyas in ~/.emacs You may use marmalade-repo and ELPA to install el-autoyas@comma{} or put it into your load-path and put the following in @code{~/.emacs}:
-
+el-autoyas is a small complement to yasnippet for emacs-lisp-mode. It provides automatically created yasnippets from eldoc argument lists. ## Requirements - @uref{https:__github.com_capitaomorte_yasnippet,yasnippet} - eldoc ## Usage - To expand the snippet@comma{} type the function name or abbrevation and then press @code{TAB} - To jump to the next field press @code{TAB}. If you did not change the field@comma{} either the parameter is kept@comma{} or replaced with @code{nil} or nothing depending on the argument list. - @strong{NOTE} To use some of the more common functions@comma{} you may wish to delete all the emacs-lisp snippets in the snippets directory. ## Limitations - Currently does not support common lisp key functions - Unclear if nested snippet expansion is supported. ## Loading el-autoyas in ~/.emacs You may use marmalade-repo and ELPA to install el-autoyas@comma{} or put it into your load-path and put the following in @code{~/.emacs}:
+@verbatim
 (require 'el-autoyas)
+@end verbatim
+
+@node Hook run on package load
+@section Hook run on package load.
+Suggestion: Add @code{el-autoyas-install}.
+
+@node yas-backward-compatability
+@subsubsection yas-backward-compatability
+Yasnippet backward compatability functions used in el-autoyas.el
+
+Value: ((yas/expand-snippet yas-expand-snippet) (yas/modified-p yas-modified-p) (yas/moving-away-p yas-moving-away-p) (yas/text yas-text) (yas/skip-and-clear-or-delete-char yas-skip-and-clear-or-delete-char) (yas/snippets-at-point yas--snippets-at-point) (yas/update-mirrors yas--update-mirrors) (yas/fallback-behavior yas-fallback-behavior) (yas/minor-mode yas-minor-mode))
+
+@node Hook run on package load
+@section Hook run on package load.
+Suggestion: Add @code{el-autoyas-install}.
+
+@node yas-backward-compatability
+@subsubsection yas-backward-compatability
+Yasnippet backward compatability functions used in el-autoyas.el
+
+Value: ((yas/expand-snippet yas-expand-snippet) (yas/modified-p yas-modified-p) (yas/moving-away-p yas-moving-away-p) (yas/text yas-text) (yas/skip-and-clear-or-delete-char yas-skip-and-clear-or-delete-char) (yas/snippets-at-point yas--snippets-at-point) (yas/update-mirrors yas--update-mirrors) (yas/fallback-behavior yas-fallback-behavior) (yas/minor-mode yas-minor-mode))
 
 @node History
 @section History
 @itemize
+@item
+@strong{12-Sep-2012} -- Documentation change ()
 @item
 @strong{12-Sep-2012} -- Updated el-autoyas to support yasnippet 0.8 naming conventions ()
 @end itemize
