@@ -47,6 +47,7 @@ Matthew L. Fidler ## Library Information @strong{el-autoyas.el} --- Automaticall
 * Hook run on package load::
 * Hook run on package load::
 * Hook run on package load::
+* Hook run on package load::
 * History::
 @end menu
 
@@ -118,9 +119,21 @@ Yasnippet backward compatability functions used in el-autoyas.el
 
 Value: ((yas/expand-snippet yas-expand-snippet) (yas/modified-p yas-modified-p) (yas/moving-away-p yas-moving-away-p) (yas/text yas-text) (yas/skip-and-clear-or-delete-char yas-skip-and-clear-or-delete-char) (yas/snippets-at-point yas--snippets-at-point) (yas/update-mirrors yas--update-mirrors) (yas/fallback-behavior yas-fallback-behavior) (yas/minor-mode yas-minor-mode))
 
+@node Hook run on package load
+@section Hook run on package load.
+Suggestion: Add @code{el-autoyas-install}.
+
+@node yas-backward-compatability
+@subsubsection yas-backward-compatability
+Yasnippet backward compatability functions used in el-autoyas.el
+
+Value: ((yas/expand-snippet yas-expand-snippet) (yas/modified-p yas-modified-p) (yas/moving-away-p yas-moving-away-p) (yas/text yas-text) (yas/skip-and-clear-or-delete-char yas-skip-and-clear-or-delete-char) (yas/snippets-at-point yas--snippets-at-point) (yas/update-mirrors yas--update-mirrors) (yas/fallback-behavior yas-fallback-behavior) (yas/minor-mode yas-minor-mode))
+
 @node History
 @section History
 @itemize
+@item
+@strong{12-Sep-2012} -- Another attempt to upload el-autoyas without the documentation issues previously observed. ()
 @item
 @strong{12-Sep-2012} -- Another attempt to sync. ()
 @item
