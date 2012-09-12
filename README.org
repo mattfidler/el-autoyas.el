@@ -8,7 +8,7 @@
  - Author :: Matthew L. Fidler
  - Maintainer :: Matthew L. Fidler
  - Created :: Mon Nov 21 10:55:55 2011 (-0600)
- - Version :: 0.2
+ - Version :: 0.3
  - Last-Updated :: Mon Nov 28 08:46:55 2011 (-0600)
  -           By :: Matthew L. Fidler
  -     Update # :: 194
@@ -83,7 +83,24 @@ A list of abbreviations that expand to a set function
 
 ** Internal Variables
 
+*** el-autoyas-backward-compatability
+Yasnippet backward compatability functions used in el-autoyas.el
+
+Value: ((yas/expand-snippet yas-expand-snippet)
+ (yas/modified-p yas-modified-p)
+ (yas/moving-away-p yas-moving-away-p)
+ (yas/text yas-text)
+ (yas/skip-and-clear-or-delete-char yas-skip-and-clear-or-delete-char)
+ (yas/snippets-at-point yas--snippets-at-point)
+ (yas/update-mirrors yas--update-mirrors)
+ (yas/fallback-behavior yas-fallback-behavior)
+ (yas/minor-mode yas-minor-mode))
+
+
+
 *** el-autoyas-load-hook
+*Hook run on package load.
+Suggestion: Add =el-autoyas-install=.
 *Hook run on package load.
 Suggestion: Add =el-autoyas-install=.
 
@@ -188,6 +205,7 @@ Value: ((yas/expand-snippet yas-expand-snippet)
 
 * History
 
+ - 12-Sep-2012 ::  Fixed variable yas-backward-compatibility to be el-autoyas-backward-compatability so that things will not collide ()
  - 12-Sep-2012 ::  Another attempt to fix emacswiki documentation ()
  - 12-Sep-2012 ::  Org-readme sync attempt -- trying to fix bug in org-readme. ()
  - 12-Sep-2012 ::  Another attempt to upload el-autoyas without the documentation issues previously observed. ()
