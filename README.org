@@ -1,14 +1,14 @@
 #+TITLE: el-autoyas.el
 #+AUTHOR: Matthew L. Fidler
 * Library Information
- /el-autoyas.el/ --- Automatically create Emacs-Lisp Yasnippets
+ *el-autoyas.el* --- Automatically create Emacs-Lisp Yasnippets
 
  - Filename :: [[file:el-autoyas.el][el-autoyas.el]]
  - Description :: Automatically create Emacs-Lisp Yasnippets
  - Author :: Matthew L. Fidler
  - Maintainer :: Matthew L. Fidler
  - Created :: Mon Nov 21 10:55:55 2011 (-0600)
- - Version :: 0.3
+ - Version :: 0.4
  - Last-Updated :: Mon Nov 28 08:46:55 2011 (-0600)
  -           By :: Matthew L. Fidler
  -     Update # :: 194
@@ -48,33 +48,7 @@ into your load-path and put the following in =~/.emacs=:
 * Functions
 ** Interactive Functions
 
-*** el-autoyas-enable
-=(el-autoyas-enable)=
-
-Load and activate package.
-
-*** el-autoyas-expand-maybe
-=(el-autoyas-expand-maybe &optional ARG)=
-
-Expands autoyas snippets.  Falls back to
-=indent-for-tab-command= if it does not expand.
-
 ** Internal Functions
-
-*** el-autoyas-snippet
-=(el-autoyas-snippet SYMBOL-NAME &optional DEL-CHAR ARG)=
-
-Creates a snippet based on the currently defined symbol
-
-*** el-autoyas-text-on-moving-away
-=(el-autoyas-text-on-moving-away DEFAULT-TEXT &optional ORIG-TEXT)=
-
- - Changes text when moving away AND original text has not changed
-
-*** el-autoyas-update
-=(el-autoyas-update)=
-
-Update fields
 * Variables
 ** Customizable Variables
 
@@ -99,6 +73,8 @@ Value: ((yas/expand-snippet yas-expand-snippet)
 
 
 *** el-autoyas-load-hook
+*Hook run on package load.
+Suggestion: Add =el-autoyas-install=.
 *Hook run on package load.
 Suggestion: Add =el-autoyas-install=.
 *Hook run on package load.
@@ -205,6 +181,7 @@ Value: ((yas/expand-snippet yas-expand-snippet)
 
 * History
 
+ - 18-Sep-2012 ::  Bug fix for backward compatability ()
  - 12-Sep-2012 ::  Fixed variable yas-backward-compatibility to be el-autoyas-backward-compatability so that things will not collide ()
  - 12-Sep-2012 ::  Another attempt to fix emacswiki documentation ()
  - 12-Sep-2012 ::  Org-readme sync attempt -- trying to fix bug in org-readme. ()

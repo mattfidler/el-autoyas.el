@@ -13,7 +13,7 @@
 
 @node el-autoyasel
 @chapter el-autoyas.el
-Matthew L. Fidler ## Library Information @emph{el-autoyas.el} --- Automatically create Emacs-Lisp Yasnippets
+Matthew L. Fidler ## Library Information @strong{el-autoyas.el} --- Automatically create Emacs-Lisp Yasnippets
 
 @itemize
 @item
@@ -27,7 +27,7 @@ Matthew L. Fidler ## Library Information @emph{el-autoyas.el} --- Automatically 
 @item
 @strong{Created} -- Mon Nov 21 10:55:55 2011 (-0600)
 @item
-@strong{Version} -- 0.3
+@strong{Version} -- 0.4
 @item
 @strong{Last-Updated} -- Mon Nov 28 08:46:55 2011 (-0600)
 @item
@@ -65,7 +65,7 @@ el-autoyas is a small complement to yasnippet for emacs-lisp-mode. It provides a
 
 @node Hook run on package load
 @section Hook run on package load.
-Suggestion: Add @code{el-autoyas-install}. ## Hook run on package load. Suggestion: Add @code{el-autoyas-install}.
+Suggestion: Add @code{el-autoyas-install}. ## Hook run on package load. Suggestion: Add @code{el-autoyas-install}. ## Hook run on package load. Suggestion: Add @code{el-autoyas-install}.
 
 @node yas-backward-compatability
 @subsubsection yas-backward-compatability
@@ -126,6 +126,8 @@ Value: ((yas/expand-snippet yas-expand-snippet) (yas/modified-p yas-modified-p) 
 @node History
 @section History
 @itemize
+@item
+@strong{18-Sep-2012} -- Bug fix for backward compatability ()
 @item
 @strong{12-Sep-2012} -- Fixed variable yas-backward-compatibility to be el-autoyas-backward-compatability so that things will not collide ()
 @item
